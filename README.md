@@ -15,6 +15,8 @@ To-DoER is a productivity app that helps you manage your tasks. This is a single
 
 - To look at the code, just open up the project in your favorite code editor.
 
+* Note: Firebase API would have expired, so you would have to setup your own firebase database
+
 ## Desktop Demo
 
 ![To-DoER Desktop Demo](/src/assets/project-demos/)
