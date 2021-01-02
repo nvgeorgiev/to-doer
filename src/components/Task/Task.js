@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { List, ListItem, ListItemText, Modal } from '@material-ui/core';
+import { List, ListItem, ListItemText, Modal, Button } from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -20,17 +20,33 @@ const useStyles = makeStyles((theme) => ({
 function Task(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [input, setInput] = useState('');
 
   const handleOpen = () => {
     setOpen(true);
   };
 
+  const updateTask = () => {
+    db.collection('tasks').doc(props.task.id).set(
+      {
+        task: input,
+      },
+      { merge: true }
+    );
+
+    setOpen(false);
+  };
+
   return (
     <div>
       <Modal open={open} onClose={(event) => setOpen(false)}>
-        <div>
-          <h1>I am a modal</h1>
-          <button>sss</button>
+        <div className={classes.paper}>
+          <input
+            placeholder={props.task.task}
+            value={input}
+            onChange={(event) => setInput(event.target.value)}
+          />
+          <Button onClick={updateTask}>Update Task</Button>
         </div>
       </Modal>
       <List className="Task">
@@ -39,7 +55,8 @@ function Task(props) {
             primary={props.task.task}
             secondary="Dummy deadline ⏰"
           />
-          <button onClick={handleOpen}>Edit</button>
+          <Button onClick={handleOpen}>EDIT</Button>
+
           <DeleteForeverIcon
             className="DeleteForeverIcon"
             onClick={(event) =>
