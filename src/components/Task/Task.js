@@ -38,7 +38,7 @@ function Task(props) {
   };
 
   return (
-    <div>
+    <div className="ListItems">
       <Modal open={open} onClose={(event) => setOpen(false)}>
         <div className={classes.paper}>
           <input

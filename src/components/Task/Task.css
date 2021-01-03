@@ -1,5 +1,5 @@
 .Task {
-  text-align: center;
+  width: 100%;
 }
 
 .DeleteForeverIcon {
@@ -8,4 +8,29 @@
 
 .DeleteForeverIcon:hover {
   cursor: pointer;
+}
+
+.ListItems {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 20px 0px #717171;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+@media all and (min-width: 450px) {
+  .Task {
+    width: 400px;
+  }
+}
+
+@media all and (min-width: 650px) {
+  .Task {
+    width: 500px;
+  }
+}
+
+@media all and (min-width: 900px) {
+  .Task {
+    width: 600px;
+  }
 }

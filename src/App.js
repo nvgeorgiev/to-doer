@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, FormControl, Input, InputLabel } from '@material-ui/core';
 import firebase from 'firebase';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 
 import './App.css';
 import db from './firebase';
@@ -36,33 +37,31 @@ function App() {
 
   return (
     <div className="App">
-      <h1>To-Do List</h1>
+      <h1>To-DoER</h1>
 
       <form>
         <FormControl>
-          <InputLabel>✅ Write a task</InputLabel>
+          <InputLabel>Write a task</InputLabel>
           <Input
             value={input}
             onChange={(event) => setInput(event.target.value)}
           />
+          <br />
+          <Button
+            type="submit"
+            onClick={addTask}
+            variant="contained"
+            color="primary"
+            disabled={!input}
+          >
+            Add Task
+          </Button>
         </FormControl>
-
-        <Button
-          type="submit"
-          onClick={addTask}
-          variant="contained"
-          color="primary"
-          disabled={!input}
-        >
-          Add Task
-        </Button>
       </form>
 
       <ul>
         {tasks.map((task) => (
-          <div>
-            <Task task={task} />
-          </div>
+          <Task task={task} />
         ))}
       </ul>
     </div>
